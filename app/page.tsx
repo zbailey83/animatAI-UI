@@ -101,9 +101,9 @@ export default function Home() {
                     </motion.div>
 
                     {/* Main Title */}
-                    <div className="space-y-6">
+                    <div className="space-y-6 overflow-x-hidden px-4">
                         <motion.h1
-                            className="text-7xl md:text-[12rem] font-black tracking-tighter leading-[0.85] uppercase flex flex-wrap justify-center gap-2 md:gap-4"
+                            className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-black tracking-tighter leading-[0.85] uppercase flex flex-nowrap justify-center gap-1 sm:gap-2 md:gap-3 lg:gap-4"
                             variants={container}
                             initial="hidden"
                             animate="visible"
@@ -112,7 +112,7 @@ export default function Home() {
                                 <motion.span
                                     key={index}
                                     variants={child}
-                                    className="inline-block brutalist-border-thick brutalist-shadow-xl px-4 md:px-8 py-2 md:py-4 bg-accent-yellow hover:bg-accent-pink transition-colors cursor-default"
+                                    className="inline-block brutalist-border-thick brutalist-shadow-xl px-2 sm:px-3 md:px-6 lg:px-8 py-1 sm:py-2 md:py-3 lg:py-4 bg-accent-yellow hover:bg-accent-pink transition-colors cursor-default flex-shrink-0"
                                     style={{
                                         display: 'inline-block',
                                     }}
