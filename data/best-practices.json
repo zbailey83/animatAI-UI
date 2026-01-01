@@ -1,0 +1,31 @@
+{
+    "GSAP": {
+        "core_rules": [
+            "Use useGSAP hook for all GSAP animations to handle cleanup.",
+            "Prefer contextSafe for event handlers.",
+            "Use gsap.set() for initial states to avoid FOUC.",
+            "Always use transform: translate() (x/y) instead of top/left for performance."
+        ],
+        "optimization": [
+            "Implement will-change: transform on heavily animated elements.",
+            "Use GSAP Snap for discrete values.",
+            "Batch animations where possible using gsap.timeline()."
+        ]
+    },
+    "MOTION": {
+        "core_rules": [
+            "Use layoutId for shared element transitions.",
+            "Prefer AnimatePresence for exit animations.",
+            "Use variants to keep animation logic clean and reusable."
+        ],
+        "optimization": [
+            "Use useReducedMotion hook for accessibility.",
+            "Minimize the number of motion elements on screen simultaneously."
+        ]
+    },
+    "AI_IDE_SPECIFICS": {
+        "Cursor": "Assume the user is using Cursor's Composer. Provide clean, modular code that is easy for the AI to parse and refactor. Use the latest best practices for GSAP 3.12+ and React 18/19.",
+        "Windsurf": "Focus on step-by-step implementation for Flow. Ensure all code blocks are complete and context-aware.",
+        "VSCode": "Standard modular React patterns with clear comments and JSDoc for IDE intellisense."
+    }
+}
