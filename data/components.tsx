@@ -233,7 +233,8 @@ export const registry: ComponentSchema[] = [
             "High damping spring transition",
             "Backdrop blur integration"
         ],
-        logicHooks: ["useDragControls", "AnimatePresence", "useCycle"]
+        logicHooks: ["useDragControls", "AnimatePresence", "useCycle"],
+        previewComponent: <ElasticDrawer />
     },
     {
         id: "nav-command-018",
@@ -309,7 +310,8 @@ export const registry: ComponentSchema[] = [
             "SVG DrawSVG animation for checkmarks",
             "Row highlighting on hover"
         ],
-        logicHooks: ["ScrollTrigger", "DrawSVGPlugin", "useGSAP"]
+        logicHooks: ["ScrollTrigger", "DrawSVGPlugin", "useGSAP"],
+        previewComponent: <StickyComparisonMatrix />
     },
     {
         id: "price-hold-025",
@@ -355,7 +357,8 @@ export const registry: ComponentSchema[] = [
             "Scrub-based animation",
             "Dynamic container width calculation"
         ],
-        logicHooks: ["ScrollTrigger", "useGSAP", "gsap.to"]
+        logicHooks: ["ScrollTrigger", "useGSAP", "gsap.to"],
+        previewComponent: <HorizontalCanvasScroll />
     },
     {
         id: "scroll-cards-032",
@@ -414,7 +417,8 @@ export const registry: ComponentSchema[] = [
             "Pin during animation",
             "Smooth scrubbing"
         ],
-        logicHooks: ["ScrollTrigger", "useGSAP", "pin: true"]
+        logicHooks: ["ScrollTrigger", "useGSAP", "pin: true"],
+        previewComponent: <SectionZoom />
     },
     {
         id: "scroll-brand-039",
@@ -460,7 +464,8 @@ export const registry: ComponentSchema[] = [
             "Ground collision detection",
             "0.7 bounce dampening factor"
         ],
-        logicHooks: ["useGSAP", "gsap.ticker", "Physics engine"]
+        logicHooks: ["useGSAP", "gsap.ticker", "Physics engine"],
+        previewComponent: <GravityIcons />
     },
     {
         id: "inter-glass-043",
@@ -504,7 +509,8 @@ export const registry: ComponentSchema[] = [
             "Opacity and scale transitions",
             "Performance optimized canvas fallback"
         ],
-        logicHooks: ["useGSAP", "AttrPlugin", "ScrollTrigger"]
+        logicHooks: ["useGSAP", "AttrPlugin", "ScrollTrigger"],
+        previewComponent: <NoiseImageReveal />
     },
     {
         id: "inter-mesh-048",
@@ -597,7 +603,8 @@ export const registry: ComponentSchema[] = [
             "Blur intensity animation",
             "Cursor proximity detection"
         ],
-        logicHooks: ["useMotionValue", "animate", "conic-gradient"]
+        logicHooks: ["useMotionValue", "animate", "conic-gradient"],
+        previewComponent: <AppleIntelligenceRipple />
     },
     {
         id: "nav-fab-016",
@@ -611,7 +618,8 @@ export const registry: ComponentSchema[] = [
             "Polar to cartesian conversion",
             "Staggered spring animations"
         ],
-        logicHooks: ["useState", "stagger", "polar math"]
+        logicHooks: ["useState", "stagger", "polar math"],
+        previewComponent: <FloatingActionOrb />
     },
     {
         id: "nav-breadcrumb-017",
@@ -625,7 +633,8 @@ export const registry: ComponentSchema[] = [
             "strokeDashoffset control",
             "Icon state transitions"
         ],
-        logicHooks: ["ScrollTrigger", "useGSAP", "scrub"]
+        logicHooks: ["ScrollTrigger", "useGSAP", "scrub"],
+        previewComponent: <BreadcrumbProgress />
     },
     {
         id: "nav-sitemap-020",
@@ -639,7 +648,8 @@ export const registry: ComponentSchema[] = [
             "stroke-dasharray pulsing",
             "Node expansion states"
         ],
-        logicHooks: ["AnimatePresence", "layoutId", "SVG manipulation"]
+        logicHooks: ["AnimatePresence", "layoutId", "SVG manipulation"],
+        previewComponent: <InteractiveSitemap />
     },
 
     // Additional Pricing/Conversion Components
@@ -655,7 +665,8 @@ export const registry: ComponentSchema[] = [
             "Step navigation flow",
             "Form validation states"
         ],
-        logicHooks: ["AnimatePresence", "mode: 'wait'", "useState"]
+        logicHooks: ["AnimatePresence", "mode: 'wait'", "useState"],
+        previewComponent: <MultiStepForm />
     },
     {
         id: "price-poll-028",
@@ -669,7 +680,8 @@ export const registry: ComponentSchema[] = [
             "Dynamic data binding",
             "Impact-style momentum"
         ],
-        logicHooks: ["useGSAP", "elastic.out", "data updates"]
+        logicHooks: ["useGSAP", "elastic.out", "data updates"],
+        previewComponent: <LivePollBars />
     },
     {
         id: "price-slot-029",
@@ -683,7 +695,8 @@ export const registry: ComponentSchema[] = [
             "yPercent: -900% animation",
             "Precision landing timing"
         ],
-        logicHooks: ["useGSAP", "yPercent", "timeline"]
+        logicHooks: ["useGSAP", "yPercent", "timeline"],
+        previewComponent: <SlotMachineReveal />
     },
     {
         id: "price-ticker-030",
@@ -697,7 +710,8 @@ export const registry: ComponentSchema[] = [
             "timeScale manipulation",
             "Pause on hover interaction"
         ],
-        logicHooks: ["useGSAP", "repeat: -1", "ease: none"]
+        logicHooks: ["useGSAP", "repeat: -1", "ease: none"],
+        previewComponent: <TrustTicker />
     },
 
     // Additional Scroll Components
@@ -713,7 +727,8 @@ export const registry: ComponentSchema[] = [
             "Opacity-based image transitions",
             "Text-triggered sections"
         ],
-        logicHooks: ["ScrollTrigger", "pin: true", "opacity toggles"]
+        logicHooks: ["ScrollTrigger", "pin: true", "opacity toggles"],
+        previewComponent: <StickyFeatureSpotlight />
     },
     {
         id: "scroll-video-037",
@@ -727,7 +742,8 @@ export const registry: ComponentSchema[] = [
             "fixed inset positioning",
             "Video element integration"
         ],
-        logicHooks: ["layout", "AnimatePresence", "video controls"]
+        logicHooks: ["layout", "AnimatePresence", "video controls"],
+        previewComponent: <VideoPeek />
     },
     {
         id: "scroll-progress-038",
@@ -741,7 +757,8 @@ export const registry: ComponentSchema[] = [
             "Circular stroke-dashoffset",
             "Fixed or cursor-following position"
         ],
-        logicHooks: ["ScrollTrigger", "scrub: true", "SVG circle"]
+        logicHooks: ["ScrollTrigger", "scrub: true", "SVG circle"],
+        previewComponent: <ProgressCircle />
     },
     {
         id: "scroll-accordion-040",
@@ -755,7 +772,8 @@ export const registry: ComponentSchema[] = [
             "offsetY positioning",
             "Smooth scroll animation"
         ],
-        logicHooks: ["ScrollToPlugin", "gsap.to", "window scroll"]
+        logicHooks: ["ScrollToPlugin", "gsap.to", "window scroll"],
+        previewComponent: <AccordionAutoScroll />
     },
 
     // Additional Interaction Components
@@ -771,7 +789,8 @@ export const registry: ComponentSchema[] = [
             "Rapid attribute changes",
             "Opacity wipe effect"
         ],
-        logicHooks: ["AttrPlugin", "useGSAP", "SVG filters"]
+        logicHooks: ["AttrPlugin", "useGSAP", "SVG filters"],
+        previewComponent: <GrainTransition />
     },
     {
         id: "inter-cursor-045",
@@ -785,7 +804,8 @@ export const registry: ComponentSchema[] = [
             "mix-blend-mode: difference",
             "Cursor tracking div"
         ],
-        logicHooks: ["useMotionValue", "mousemove", "blend modes"]
+        logicHooks: ["useMotionValue", "mousemove", "blend modes"],
+        previewComponent: <CursorBlobSpotlight />
     },
     {
         id: "inter-stack-049",
@@ -814,6 +834,7 @@ export const registry: ComponentSchema[] = [
             "Force application physics",
             "20-30 div node management"
         ],
-        logicHooks: ["gsap.ticker", "mousemove", "vector math"]
+        logicHooks: ["gsap.ticker", "mousemove", "vector math"],
+        previewComponent: <NodeParticles />
     }
 ];
