@@ -25,10 +25,10 @@ export function PromptCard({ component }: PromptCardProps) {
     };
 
     const difficultyColors = {
-        Basic: 'bg-success',
-        Intermediate: 'bg-info',
-        Advanced: 'bg-warning',
-        Elite: 'bg-error',
+        Basic: 'text-accent-green border-accent-green/20 bg-accent-green/10',
+        Intermediate: 'text-accent-blue border-accent-blue/20 bg-accent-blue-dim',
+        Advanced: 'text-yellow-500 border-yellow-500/20 bg-yellow-500/10',
+        Elite: 'text-accent-red border-accent-red/20 bg-accent-red/10',
     };
 
     return (
@@ -36,59 +36,59 @@ export function PromptCard({ component }: PromptCardProps) {
             layout
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="group relative flex flex-col h-full brutalist-card hover:-translate-y-2 transition-all duration-300"
+            className="group relative flex flex-col h-full glass-card"
         >
-            <div className="p-8 flex flex-col flex-grow relative">
+            <div className="p-6 flex flex-col flex-grow relative">
                 <div className="flex justify-between items-start mb-6">
-                    <span className={`brutalist-border px-4 py-2 text-xs font-black tracking-widest uppercase text-border ${difficultyColors[component.difficulty]}`}>
+                    <span className={`px-3 py-1.5 rounded-lg text-xs font-medium tracking-wide uppercase border ${difficultyColors[component.difficulty]}`}>
                         {component.difficulty}
                     </span>
                     <div className="flex gap-2">
-                        <span className="brutalist-border bg-bg-tertiary p-3 text-text-primary">
-                            {component.engine === 'GSAP' ? <Zap size={20} strokeWidth={3} /> : <Layers size={20} strokeWidth={3} />}
+                        <span className="glass-panel p-2 text-text-secondary group-hover:text-accent-blue transition-colors">
+                            {component.engine === 'GSAP' ? <Zap size={18} strokeWidth={2} /> : <Layers size={18} strokeWidth={2} />}
                         </span>
                     </div>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-black uppercase mb-4 tracking-tight leading-tight">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 tracking-tight leading-tight group-hover:text-accent-blue transition-colors">
                     {component.title}
                 </h3>
 
                 {component.previewComponent && (
-                    <div className="mb-8 relative">
-                        <div className="brutalist-border bg-bg-primary p-4 overflow-hidden">
+                    <div className="mb-6 relative">
+                        <div className="glass-panel p-4 overflow-hidden border-dashed">
                             {component.previewComponent}
                         </div>
                     </div>
                 )}
 
-                <p className="text-sm text-text-secondary font-bold uppercase mb-8 line-clamp-3 leading-relaxed">
+                <p className="text-sm text-text-secondary mb-6 line-clamp-3 leading-relaxed">
                     {component.intent}
                 </p>
 
-                <div className="mt-auto space-y-6">
+                <div className="mt-auto space-y-4">
                     <div className="flex flex-wrap gap-2">
                         {component.features.map((feature, i) => (
-                            <span key={i} className="text-xs font-black uppercase text-border bg-accent-yellow brutalist-border px-3 py-2">
+                            <span key={i} className="text-xs text-text-muted bg-bg-surface-hover px-3 py-1.5 rounded-md border border-border-subtle">
                                 {feature}
                             </span>
                         ))}
                     </div>
 
-                    <div className="flex gap-3 pt-6 border-t-4 border-border">
+                    <div className="flex gap-3 pt-4 border-t border-border-subtle">
                         <button
                             onClick={handleCopy}
-                            className="flex-1 brutalist-btn bg-accent-lime text-border flex items-center justify-center gap-2 py-4 text-sm"
+                            className="flex-1 tech-btn-primary py-3 rounded-lg flex items-center justify-center gap-2 text-sm font-medium"
                         >
-                            {copied ? <Check size={18} strokeWidth={3} /> : <Copy size={18} strokeWidth={3} />}
-                            {copied ? 'COPIED!' : 'COPY SCHEMA'}
+                            {copied ? <Check size={16} strokeWidth={2} /> : <Copy size={16} strokeWidth={2} />}
+                            {copied ? 'Copied!' : 'Copy Schema'}
                         </button>
                         <button
                             onClick={() => setShowPrompt(!showPrompt)}
-                            className="brutalist-btn bg-accent-cyan px-6 flex items-center justify-center text-border"
+                            className="tech-btn px-4 py-3 rounded-lg flex items-center justify-center"
                             title="Preview Prompt"
                         >
-                            <Code size={22} strokeWidth={3} />
+                            <Code size={18} strokeWidth={2} />
                         </button>
                     </div>
                 </div>
@@ -100,10 +100,10 @@ export function PromptCard({ component }: PromptCardProps) {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden bg-bg-tertiary border-t-4 border-border"
+                        className="overflow-hidden bg-bg-surface border-t border-border-subtle"
                     >
-                        <div className="p-6">
-                            <pre className="text-xs text-text-secondary font-mono whitespace-pre-wrap leading-relaxed font-bold">
+                        <div className="p-4">
+                            <pre className="text-xs text-text-secondary font-mono whitespace-pre-wrap leading-relaxed">
                                 {compilePrompt(component)}
                             </pre>
                         </div>
