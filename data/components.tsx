@@ -141,7 +141,8 @@ export const registry: ComponentSchema[] = [
             "feDisplacementMap SVG filter",
             "Hover-triggered distortion waves"
         ],
-        logicHooks: ["useGSAP", "AttrPlugin", "MouseEvents"]
+        logicHooks: ["useGSAP", "AttrPlugin", "MouseEvents"],
+        previewComponent: <LiquidTextDistortion />
     },
     {
         id: "typo-typewriter-010",
@@ -534,7 +535,8 @@ export const registry: ComponentSchema[] = [
             "3D rotation offsets",
             "Staggered animation timing"
         ],
-        logicHooks: ["SplitText", "useGSAP", "stagger"]
+        logicHooks: ["SplitText", "useGSAP", "stagger"],
+        previewComponent: <StaggeredSplitText />
     },
     {
         id: "typo-path-007",
@@ -548,7 +550,8 @@ export const registry: ComponentSchema[] = [
             "Custom SVG path drawing",
             "Position-based text alignment"
         ],
-        logicHooks: ["MotionPathPlugin", "useGSAP", "SVG paths"]
+        logicHooks: ["MotionPathPlugin", "useGSAP", "SVG paths"],
+        previewComponent: <TextPathFollower />
     },
     {
         id: "typo-float-008",
@@ -562,7 +565,8 @@ export const registry: ComponentSchema[] = [
             "Yoyo animation pattern",
             "Per-character timing variation"
         ],
-        logicHooks: ["useGSAP", "yoyo: true", "random utilities"]
+        logicHooks: ["useGSAP", "yoyo: true", "random utilities"],
+        previewComponent: <CharacterFloat />
     },
     {
         id: "typo-highlight-009",
@@ -576,7 +580,8 @@ export const registry: ComponentSchema[] = [
             "ScrollTrigger activation",
             "CSS pseudo-element styling"
         ],
-        logicHooks: ["ScrollTrigger", "useGSAP", "::after pseudo"]
+        logicHooks: ["ScrollTrigger", "useGSAP", "::after pseudo"],
+        previewComponent: <HighlightReveal />
     },
 
     // Additional Navigation Components
