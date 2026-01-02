@@ -86,7 +86,7 @@ export default function ParallaxScrollScene() {
   return (
     <div
       ref={containerRef}
-      className="relative bg-zinc-950"
+      className="relative bg-bg-app"
       style={{ height: '300vh' }}
     >
       {/* Fixed viewport container */}
@@ -186,7 +186,7 @@ export default function ParallaxScrollScene() {
         </motion.div>
 
         {/* Progress Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-zinc-800 z-50">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-border-subtle z-50">
           <motion.div
             className="h-full bg-gradient-to-r from-accent-blue to-accent-green"
             style={{ scaleX: smoothProgress, transformOrigin: '0%' }}

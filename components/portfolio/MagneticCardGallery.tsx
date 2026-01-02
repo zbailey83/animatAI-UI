@@ -67,9 +67,9 @@ export default function MagneticCardGallery() {
   }, [mouseX, mouseY]);
 
   return (
-    <div 
+    <div
       ref={containerRef}
-      className="relative min-h-screen bg-zinc-950 py-24 px-6 overflow-hidden"
+      className="relative min-h-screen bg-bg-app py-24 px-6 overflow-hidden"
     >
       {/* Technical Grid */}
       <div className="absolute inset-0 technical-grid opacity-30" />
@@ -80,7 +80,7 @@ export default function MagneticCardGallery() {
         style={{
           background: useTransform(
             [smoothMouseX, smoothMouseY],
-            ([x, y]) => 
+            ([x, y]) =>
               `radial-gradient(600px circle at ${x}px ${y}px, rgba(59, 130, 246, 0.15), transparent 80%)`
           )
         }}
@@ -129,14 +129,14 @@ interface MagneticCardProps {
   mouseY: any;
 }
 
-function MagneticCard({ 
-  project, 
-  index, 
-  isHovered, 
-  onHover, 
+function MagneticCard({
+  project,
+  index,
+  isHovered,
+  onHover,
   onLeave,
   mouseX,
-  mouseY 
+  mouseY
 }: MagneticCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [cardPosition, setCardPosition] = useState({ x: 0, y: 0, width: 0, height: 0 });
@@ -153,28 +153,28 @@ function MagneticCard({
   }, []);
 
   // Calculate magnetic effect
-  const magneticX = useTransform(mouseX, (x) => {
+  const magneticX = useTransform(mouseX, (x: number) => {
     if (!isHovered) return 0;
     const cardCenterX = cardPosition.x + cardPosition.width / 2;
     const distance = x - (cardCenterX - cardPosition.x);
     return Math.max(-20, Math.min(20, distance * 0.1));
   });
 
-  const magneticY = useTransform(mouseY, (y) => {
+  const magneticY = useTransform(mouseY, (y: number) => {
     if (!isHovered) return 0;
     const cardCenterY = cardPosition.y + cardPosition.height / 2;
     const distance = y - (cardCenterY - cardPosition.y);
     return Math.max(-20, Math.min(20, distance * 0.1));
   });
 
-  const rotateX = useTransform(mouseY, (y) => {
+  const rotateX = useTransform(mouseY, (y: number) => {
     if (!isHovered) return 0;
     const cardCenterY = cardPosition.y + cardPosition.height / 2;
     const distance = y - (cardCenterY - cardPosition.y);
     return Math.max(-15, Math.min(15, -distance * 0.02));
   });
 
-  const rotateY = useTransform(mouseX, (x) => {
+  const rotateY = useTransform(mouseX, (x: number) => {
     if (!isHovered) return 0;
     const cardCenterX = cardPosition.x + cardPosition.width / 2;
     const distance = x - (cardCenterX - cardPosition.x);
@@ -235,18 +235,18 @@ function MagneticCard({
             className="flex items-center gap-2 text-accent-blue font-medium"
           >
             <span>View Project</span>
-            <svg 
-              width="20" 
-              height="20" 
-              viewBox="0 0 20 20" 
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
               fill="none"
               className="group-hover:translate-x-2 transition-transform"
             >
-              <path 
-                d="M4 10h12m0 0l-4-4m4 4l-4 4" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
+              <path
+                d="M4 10h12m0 0l-4-4m4 4l-4 4"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>

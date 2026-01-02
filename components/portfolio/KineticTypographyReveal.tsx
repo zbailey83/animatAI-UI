@@ -92,7 +92,7 @@ export default function KineticTypographyReveal() {
   const glitch = () => {
     particles.forEach((particle, i) => {
       const timeline = gsap.timeline();
-      
+
       for (let j = 0; j < 5; j++) {
         timeline.to(`#particle-${i}`, {
           x: particle.originalX + (Math.random() * 20 - 10),
@@ -101,7 +101,7 @@ export default function KineticTypographyReveal() {
           ease: 'none'
         });
       }
-      
+
       timeline.to(`#particle-${i}`, {
         x: particle.originalX,
         y: particle.originalY,
@@ -112,7 +112,7 @@ export default function KineticTypographyReveal() {
   };
 
   return (
-    <div className="relative min-h-screen bg-zinc-950 flex items-center justify-center overflow-hidden py-24">
+    <div className="relative min-h-screen bg-bg-app flex items-center justify-center overflow-hidden py-24">
       {/* Technical Grid */}
       <div className="absolute inset-0 technical-grid opacity-20" />
 
@@ -148,7 +148,7 @@ export default function KineticTypographyReveal() {
         </motion.div>
 
         {/* Particle Container */}
-        <div 
+        <div
           ref={containerRef}
           className="relative h-[200px] flex items-center justify-center mb-16"
         >
@@ -176,7 +176,7 @@ export default function KineticTypographyReveal() {
               onMouseLeave={() => {
                 gsap.to(`#particle-${i}`, {
                   scale: 1,
-                  color: '#fafafa',
+                  color: 'var(--text-primary)',
                   duration: 0.3,
                   ease: 'power2.out'
                 });

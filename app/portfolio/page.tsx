@@ -5,15 +5,16 @@ import MagneticCardGallery from '@/components/portfolio/MagneticCardGallery';
 import KineticTypographyReveal from '@/components/portfolio/KineticTypographyReveal';
 import ParallaxScrollScene from '@/components/portfolio/ParallaxScrollScene';
 import Link from 'next/link';
+import ThemeToggle from '@/components/ThemeToggle';
 import { ArrowLeft, Github, ExternalLink } from 'lucide-react';
 
 export default function PortfolioShowcase() {
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-bg-app">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-[100] glass-panel border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link 
+          <Link
             href="/"
             className="flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors"
           >
@@ -22,16 +23,17 @@ export default function PortfolioShowcase() {
           </Link>
 
           <div className="flex items-center gap-4">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
+            <ThemeToggle />
+            <a
+              href="https://github.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="glass-panel p-2 hover:border-accent-blue transition-colors"
             >
               <Github size={20} />
             </a>
-            <a 
-              href="#" 
+            <a
+              href="#"
               className="tech-btn-primary px-6 py-2 rounded-lg text-sm font-medium inline-flex items-center gap-2"
             >
               <span>View Code</span>
@@ -44,7 +46,7 @@ export default function PortfolioShowcase() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-6 overflow-hidden">
         <div className="absolute inset-0 technical-grid opacity-20" />
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -137,7 +139,7 @@ export default function PortfolioShowcase() {
       {/* Technical Specs */}
       <section id="technical-specs" className="relative py-24 px-6">
         <div className="absolute inset-0 technical-grid opacity-20" />
-        
+
         <div className="relative z-10 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
