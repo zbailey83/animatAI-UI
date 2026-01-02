@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Zap, Layers, Sparkles, Type, Compass, CreditCard, MousePointer2, Cpu } from 'lucide-react';
+import { ArrowRight, Zap, Layers, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ThemeToggle from '@/components/ThemeToggle';
+import { InfiniteCategoryCarousel } from '@/components/InfiniteCategoryCarousel';
 
 export default function Home() {
     return (
@@ -137,42 +138,15 @@ export default function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.4 }}
-                        className="pt-32 w-full"
+                        className="pt-24 w-full"
                     >
-                        <div className="flex items-center gap-4 mb-12 justify-center">
+                        <div className="flex items-center gap-4 mb-4 justify-center">
                             <div className="h-px bg-gradient-to-r from-transparent via-border-subtle to-transparent w-full max-w-[100px]" />
                             <span className="text-xs font-mono uppercase tracking-widest text-text-muted">Browse Categories</span>
                             <div className="h-px bg-gradient-to-r from-transparent via-border-subtle to-transparent w-full max-w-[100px]" />
                         </div>
 
-                        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                            {[
-                                { name: 'Typography', icon: Type, href: '/library/typography', count: '10+' },
-                                { name: 'Navigation', icon: Compass, href: '/library/navigation', count: '8+' },
-                                { name: 'Pricing', icon: CreditCard, href: '/library/pricing', count: '12+' },
-                                { name: 'Scroll', icon: MousePointer2, href: '/library/scroll', count: '15+' },
-                                { name: 'Interactions', icon: Cpu, href: '/library/interactions', count: '9+' },
-                            ].map((cat, i) => (
-                                <Link
-                                    key={cat.name}
-                                    href={cat.href}
-                                    className="group"
-                                >
-                                    <motion.div
-                                        whileHover={{ y: -5 }}
-                                        className="glass-card p-4 h-full flex flex-col items-center justify-center gap-3 text-center hover:border-accent-blue/50 transition-colors"
-                                    >
-                                        <div className="p-3 rounded-full bg-bg-secondary/50 group-hover:bg-accent-blue/10 transition-colors">
-                                            <cat.icon size={20} className="text-text-secondary group-hover:text-accent-blue transition-colors" />
-                                        </div>
-                                        <div>
-                                            <div className="text-sm font-medium mb-1">{cat.name}</div>
-                                            <div className="text-[10px] sm:text-xs text-text-muted font-mono">{cat.count} Components</div>
-                                        </div>
-                                    </motion.div>
-                                </Link>
-                            ))}
-                        </div>
+                        <InfiniteCategoryCarousel />
                     </motion.div>
                 </div>
             </main>
