@@ -21,11 +21,61 @@ if (typeof window !== "undefined") {
 }
 
 const CATEGORIES = [
-    { name: 'Typography', icon: Type, href: '/library/typography', count: '10+' },
-    { name: 'Navigation', icon: Compass, href: '/library/navigation', count: '8+' },
-    { name: 'Pricing', icon: CreditCard, href: '/library/pricing', count: '12+' },
-    { name: 'Scroll', icon: MousePointer2, href: '/library/scroll', count: '15+' },
-    { name: 'Interactions', icon: Cpu, href: '/library/interactions', count: '9+' },
+    {
+        name: 'Typography',
+        icon: Type,
+        href: '/library/typography',
+        count: '10+',
+        styles: {
+            hoverBorder: 'hover:border-cyan-500/50',
+            iconBg: 'group-hover:bg-cyan-500/10',
+            iconColor: 'group-hover:text-cyan-500'
+        }
+    },
+    {
+        name: 'Navigation',
+        icon: Compass,
+        href: '/library/navigation',
+        count: '8+',
+        styles: {
+            hoverBorder: 'hover:border-emerald-500/50',
+            iconBg: 'group-hover:bg-emerald-500/10',
+            iconColor: 'group-hover:text-emerald-500'
+        }
+    },
+    {
+        name: 'Pricing',
+        icon: CreditCard,
+        href: '/library/pricing',
+        count: '12+',
+        styles: {
+            hoverBorder: 'hover:border-violet-500/50',
+            iconBg: 'group-hover:bg-violet-500/10',
+            iconColor: 'group-hover:text-violet-500'
+        }
+    },
+    {
+        name: 'Scroll',
+        icon: MousePointer2,
+        href: '/library/scroll',
+        count: '15+',
+        styles: {
+            hoverBorder: 'hover:border-amber-500/50',
+            iconBg: 'group-hover:bg-amber-500/10',
+            iconColor: 'group-hover:text-amber-500'
+        }
+    },
+    {
+        name: 'Interactions',
+        icon: Cpu,
+        href: '/library/interactions',
+        count: '9+',
+        styles: {
+            hoverBorder: 'hover:border-rose-500/50',
+            iconBg: 'group-hover:bg-rose-500/10',
+            iconColor: 'group-hover:text-rose-500'
+        }
+    },
 ];
 
 // Duplicate items to create a seamless loop effect
@@ -39,22 +89,48 @@ export function InfiniteCategoryCarousel() {
         const boxes = gsap.utils.toArray('.category-card');
 
         const loop = horizontalLoop(boxes, {
-            paused: true, // Start paused or playing? Usually playing.
+            paused: true,
             draggable: true,
             center: true,
             repeat: -1,
             speed: 1.5,
-            paddingRight: 24, // Matches gap-6 (24px)
-            snap: false // Snap can be tricky without inertia plugin, disable for smoother free-scroll feeling or set to 1 for generic snapping
+            paddingRight: 24,
+            snap: false
         });
 
-        // Start playing
         loop.play();
-
         setLoopInstance(loop);
 
+        // Velocity Tilt Logic
+        let lastX = 0;
+        let velocity = 0;
+
+        const updateTilt = () => {
+            const currentX = gsap.getProperty(boxes[0], "xPercent") as number;
+            let delta = currentX - lastX;
+
+            if (Math.abs(delta) > 50) {
+                delta = 0;
+            }
+
+            velocity += (delta - velocity) * 0.1;
+
+            const tilt = velocity * -5;
+            const clampedTilt = Math.max(-10, Math.min(10, tilt));
+
+            gsap.set(".category-card-inner", {
+                skewX: clampedTilt,
+                rotateZ: clampedTilt * 0.5,
+                transformOrigin: "center center"
+            });
+
+            lastX = currentX;
+        };
+
+        gsap.ticker.add(updateTilt);
+
         return () => {
-            // Cleanup if needed, though gsap.context handles most
+            gsap.ticker.remove(updateTilt);
             if (loop.draggable) loop.draggable.kill();
             loop.kill();
         }
@@ -70,7 +146,12 @@ export function InfiniteCategoryCarousel() {
     };
 
     return (
-        <div ref={containerRef} className="w-full relative py-12 group">
+        <div
+            ref={containerRef}
+            className="w-full relative py-12 group"
+            onMouseEnter={() => loopInstance?.pause()}
+            onMouseLeave={() => loopInstance?.play()}
+        >
 
             {/* Carousel Container */}
             <div className="overflow-hidden w-full cursor-grab active:cursor-grabbing py-4">
@@ -81,9 +162,9 @@ export function InfiniteCategoryCarousel() {
                             className="category-card flex-shrink-0 w-[240px] md:w-[280px]"
                         >
                             <Link href={cat.href} draggable={false} className="block h-full">
-                                <div className="glass-card p-6 h-[200px] flex flex-col items-center justify-center gap-4 text-center hover:border-accent-blue/50 transition-colors select-none">
-                                    <div className="p-4 rounded-full bg-bg-secondary/50 group-hover:bg-accent-blue/10 transition-colors">
-                                        <cat.icon size={32} className="text-text-secondary group-hover:text-accent-blue transition-colors" />
+                                <div className={`category-card-inner glass-card p-6 h-[200px] flex flex-col items-center justify-center gap-4 text-center ${cat.styles.hoverBorder} transition-colors select-none`}>
+                                    <div className={`p-4 rounded-full bg-bg-secondary/50 ${cat.styles.iconBg} transition-colors`}>
+                                        <cat.icon size={32} className={`text-text-secondary ${cat.styles.iconColor} transition-colors`} />
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-bold mb-1">{cat.name}</h3>

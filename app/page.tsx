@@ -94,6 +94,23 @@ export default function Home() {
                         </Link>
                     </motion.div>
 
+
+                    {/* Component Categories Section */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.0 }}
+                        className="pt-24 w-full"
+                    >
+                        <div className="flex items-center gap-4 mb-4 justify-center">
+                            <div className="h-px bg-gradient-to-r from-transparent via-border-subtle to-transparent w-full max-w-[100px]" />
+                            <span className="text-xs font-mono uppercase tracking-widest text-text-muted">Browse Categories</span>
+                            <div className="h-px bg-gradient-to-r from-transparent via-border-subtle to-transparent w-full max-w-[100px]" />
+                        </div>
+
+                        <InfiniteCategoryCarousel />
+                    </motion.div>
+
                     {/* Feature Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-24">
                         {[
@@ -117,7 +134,7 @@ export default function Home() {
                                 key={i}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 1 + (i * 0.1) }}
+                                transition={{ delay: 1.4 + (i * 0.1) }}
                                 className="glass-card p-6 space-y-4 text-left group"
                             >
                                 <div className="glass-panel p-3 w-fit group-hover:scale-110 transition-transform">
@@ -132,22 +149,6 @@ export default function Home() {
                             </motion.div>
                         ))}
                     </div>
-
-                    {/* Component Categories Section */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.4 }}
-                        className="pt-24 w-full"
-                    >
-                        <div className="flex items-center gap-4 mb-4 justify-center">
-                            <div className="h-px bg-gradient-to-r from-transparent via-border-subtle to-transparent w-full max-w-[100px]" />
-                            <span className="text-xs font-mono uppercase tracking-widest text-text-muted">Browse Categories</span>
-                            <div className="h-px bg-gradient-to-r from-transparent via-border-subtle to-transparent w-full max-w-[100px]" />
-                        </div>
-
-                        <InfiniteCategoryCarousel />
-                    </motion.div>
                 </div>
             </main>
 

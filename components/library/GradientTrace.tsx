@@ -41,7 +41,7 @@ export function GradientTrace() {
     }, { scope: container });
 
     return (
-        <div ref={container} className="flex items-center justify-center p-8 bg-zinc-950 rounded-xl border border-zinc-900 aspect-square">
+        <div ref={container} className="flex items-center justify-center p-8 glass-card aspect-square">
             <div className="w-full max-w-[200px]">
                 <svg
                     id="svg-stage"
