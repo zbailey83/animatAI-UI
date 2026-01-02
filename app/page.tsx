@@ -69,12 +69,12 @@ export default function Home() {
                         Elite GSAP & Framer Motion schemas for modern pioneers.
                     </motion.p>
 
-                    {/* CTA Button */}
+                    {/* CTA Buttons */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.8, type: "spring" }}
-                        className="pt-8"
+                        className="pt-8 flex flex-wrap gap-4 justify-center"
                     >
                         <Link
                             href="/library"
@@ -82,6 +82,14 @@ export default function Home() {
                         >
                             <span>Explore Library</span>
                             <ArrowRight className="group-hover:translate-x-1 transition-transform" strokeWidth={2} size={20} />
+                        </Link>
+                        
+                        <Link
+                            href="/portfolio"
+                            className="glass-card px-10 py-5 rounded-xl inline-flex items-center gap-3 text-lg font-medium group hover:border-accent-green transition-colors"
+                        >
+                            <Sparkles className="group-hover:rotate-12 transition-transform" strokeWidth={2} size={20} />
+                            <span>Portfolio Showcase</span>
                         </Link>
                     </motion.div>
 

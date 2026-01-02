@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AnimAI Library - Elite Animation Prompts for GSAP & Framer Motion",
-  description: "The AI Design Bible. Elite prompts and schemas for building high-performance GSAP and Framer Motion components with architectural certainty. Stop guessing, start shipping.",
+  title: "animatAI Library - Elite Animation Prompts for GSAP & Framer Motion",
+  description: "The AI Design Bible. Elite prompts and schemas for building high-performance GSAP and Framer Motion components with architectural certainty. Powered by GSAP and Framer Motion.",
 };
 
 export default function RootLayout({
