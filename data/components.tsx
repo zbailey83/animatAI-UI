@@ -51,6 +51,7 @@ import { NodeParticles } from '@/components/library/NodeParticles';
 import { TextPathFollower } from '@/components/library/TextPathFollower';
 import { BreadcrumbProgress } from '@/components/library/BreadcrumbProgress';
 import { InteractiveSitemap } from '@/components/library/InteractiveSitemap';
+import { GradientTrace } from '@/components/library/GradientTrace';
 
 export const registry: ComponentSchema[] = [
     // --- Typography & Brand Identity ---
@@ -836,5 +837,20 @@ export const registry: ComponentSchema[] = [
         ],
         logicHooks: ["gsap.ticker", "mousemove", "vector math"],
         previewComponent: <NodeParticles />
+    },
+    {
+        id: "inter-trace-051",
+        title: "Gradient Trace",
+        category: "Interactions",
+        engine: "GSAP",
+        difficulty: "Intermediate",
+        intent: "SVG path drawing animation with gradient stroke.",
+        features: [
+            "stroke-dashoffset animation",
+            "SVG gradient definition",
+            "Auto-looping draw effect"
+        ],
+        logicHooks: ["useGSAP", "getTotalLength", "strokeDasharray"],
+        previewComponent: <GradientTrace />
     }
 ];
