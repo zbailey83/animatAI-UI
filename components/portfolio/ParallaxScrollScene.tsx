@@ -84,7 +84,7 @@ export default function ParallaxScrollScene() {
   }, []);
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="relative bg-zinc-950"
       style={{ height: '300vh' }}
@@ -112,7 +112,7 @@ export default function ParallaxScrollScene() {
               opacity: useTransform(smoothProgress, [0, 0.3, 0.7, 1], [1, 1, 0.5, 0]),
             }}
           >
-            <motion.h1 
+            <motion.h1
               className="text-7xl md:text-9xl font-bold mb-6"
               style={{
                 y: useTransform(smoothProgress, [0, 1], [0, -200]),
@@ -120,7 +120,7 @@ export default function ParallaxScrollScene() {
             >
               <span className="text-gradient">Parallax</span>
             </motion.h1>
-            
+
             <motion.p
               className="text-xl md:text-2xl text-text-secondary max-w-2xl mx-auto px-6"
               style={{
@@ -172,11 +172,11 @@ export default function ParallaxScrollScene() {
               transition={{ duration: 1.5, repeat: Infinity }}
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path 
-                  d="M10 4v12m0 0l-4-4m4 4l4-4" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
+                <path
+                  d="M10 4v12m0 0l-4-4m4 4l4-4"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                   className="text-accent-blue"
                 />
@@ -201,7 +201,7 @@ export default function ParallaxScrollScene() {
           }}
         >
           <p className="font-mono text-xs text-text-muted tracking-wider">
-            SCROLL: {useTransform(smoothProgress, (v) => Math.round(v * 100))}%
+            SCROLL: <motion.span>{useTransform(smoothProgress, (v) => Math.round(v * 100))}</motion.span>%
           </p>
         </motion.div>
       </div>
@@ -249,7 +249,7 @@ function ParallaxLayer({ layer, progress, index }: ParallaxLayerProps) {
           }}
         >
           <div className="corner-brackets" />
-          
+
           <div className="flex items-center gap-6">
             <motion.div
               className="text-6xl"
