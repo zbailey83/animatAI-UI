@@ -12,9 +12,9 @@ import {
     ArrowRight
 } from "lucide-react";
 import gsap from "gsap";
-import { Draggable } from "gsap/Draggable";
+import { Draggable } from "gsap/all";
 import { useGSAP } from "@gsap/react";
-import { horizontalLoop } from "@/utils/gsapHelpers";
+import { horizontalLoop, HorizontalLoopTimeline } from "@/utils/gsapHelpers";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(Draggable);
@@ -83,10 +83,10 @@ const ITEMS = [...CATEGORIES, ...CATEGORIES, ...CATEGORIES, ...CATEGORIES];
 
 export function InfiniteCategoryCarousel() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [loopInstance, setLoopInstance] = useState<gsap.core.Timeline | null>(null);
+    const [loopInstance, setLoopInstance] = useState<HorizontalLoopTimeline | null>(null);
 
     useGSAP(() => {
-        const boxes = gsap.utils.toArray('.category-card');
+        const boxes = gsap.utils.toArray('.category-card') as HTMLElement[];
 
         const loop = horizontalLoop(boxes, {
             paused: true,

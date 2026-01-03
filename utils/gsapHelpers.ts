@@ -1,12 +1,20 @@
 
 import gsap from "gsap";
-import { Draggable } from "gsap/Draggable";
+import { Draggable } from "gsap/all";
+
+export interface HorizontalLoopTimeline extends gsap.core.Timeline {
+    next: (vars?: any) => gsap.core.Tween;
+    prev: (vars?: any) => gsap.core.Tween;
+    toIndex: (index: number, vars?: any) => gsap.core.Tween;
+    times: number[];
+    draggable?: Draggable;
+}
 
 /*
  * Helper function that creates a seamless loop of elements
  * Based on GreenSock's horizontalLoop helper
  */
-export function horizontalLoop(items: any[], config: any) {
+export function horizontalLoop(items: any[], config: any): HorizontalLoopTimeline {
     items = gsap.utils.toArray(items);
     config = config || {};
     let tl = gsap.timeline({
@@ -16,16 +24,16 @@ export function horizontalLoop(items: any[], config: any) {
         onReverseComplete: () => {
             tl.totalTime(tl.rawTime() + tl.duration() * 100);
         }
-    }),
+    }) as HorizontalLoopTimeline,
         length = items.length,
         startX = items[0].offsetLeft,
-        times: any[] = [],
-        widths: any[] = [],
-        xPercents: any[] = [],
+        times: number[] = [],
+        widths: number[] = [],
+        xPercents: number[] = [],
         curIndex = 0,
         pixelsPerSecond = (config.speed || 1) * 100,
         snap = config.snap === false ? (v: any) => v : gsap.utils.snap(config.snap || 1), // some browsers shift by a pixel to accommodate flex layouts, so for example if width is 20% the first element's width might be 242px, and the next 243px, alternating back and forth. So we snap to 5 percentage points to make things look more natural
-        totalWidth,
+        totalWidth: number,
         curX,
         distanceToStart,
         distanceToLoop,
@@ -87,14 +95,16 @@ export function horizontalLoop(items: any[], config: any) {
     tl.progress(1, true).progress(0, true); // pre-render for performance
 
     if (config.reversed) {
-        tl.vars.onReverseComplete();
+        if (tl.vars.onReverseComplete) {
+            tl.vars.onReverseComplete();
+        }
         tl.reverse();
     }
 
     if (config.draggable && typeof Draggable === "function") {
         let proxy = document.createElement("div"),
             wrap = gsap.utils.wrap(0, 1),
-            ratio, startProgress, draggable, boxWidth, snapFunc;
+            ratio: number, startProgress: number, draggable: Draggable, boxWidth: number;
 
         draggable = Draggable.create(proxy, {
             trigger: items[0].parentNode,
@@ -120,18 +130,10 @@ export function horizontalLoop(items: any[], config: any) {
             inertia: true, // Requires InertiaPlugin, fall back if not present?
             // @ts-ignore
             snap: function (value) {
-                // Simplified snap logic or assume InertiaPlugin handles it if available
-                // If no InertiaPlugin, this snap might not trigger on throw.
-                // We can use onDragEnd to snap manually if needed.
-
-                /* 
-                 * If inertia is not available, we can't rely on 'snap' property of Draggable fully for the timeline progress directly
-                 * unless we map it. 
-                 * For now, let's assume basic dragging updates progress.
-                 */
                 return value;
             },
             onRelease: function () {
+                // @ts-ignore
                 if (!this.tween || !this.isThrowing) { // if not throwing (inertia plugin missing or minimal movement)
                     tl.play();
                 }
